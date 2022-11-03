@@ -30,3 +30,15 @@ The image above shows an example of the granularity that the model provides as o
 ![8](https://github.com/brendan123/Semantic-Segmentation/blob/milestone-2/docs/images/8.png)
 ![9](https://github.com/brendan123/Semantic-Segmentation/blob/milestone-2/docs/images/9.png)
 ![10](https://github.com/brendan123/Semantic-Segmentation/blob/milestone-2/docs/images/10.png)
+
+## Training and Validation Loss vs. Epochs
+
+As can be seen, the training and validation loss decrease for the first couple of dozen epochs then plateaus.
+
+![graph](https://github.com/brendan123/Semantic-Segmentation/blob/milestone-2/docs/images/tv_loss_over_epochs.png)
+
+## Precision and Recall Values
+
+Below are the final precision and recall values (for training and validation sets) as computed by keras metrics.
+
+![pr](https://github.com/brendan123/Semantic-Segmentation/blob/milestone-2/docs/images/pr.png)
