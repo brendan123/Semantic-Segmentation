@@ -50,7 +50,7 @@ As can be seen, the training and validation loss decrease for the first couple o
 
 ## Precision and Recall Curve
 
-Below are the final mode's precision and recall values (for validation set) as computed by sklearn's precision_recall_curve function.
+Below are the final model's precision and recall values (for validation set) as computed by sklearn's precision_recall_curve function.
 
 ![prcurve](https://github.com/brendan123/Semantic-Segmentation/blob/milestone-2/docs/images/pr_curve.png)
 
