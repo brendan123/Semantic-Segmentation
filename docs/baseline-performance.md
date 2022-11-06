@@ -48,6 +48,12 @@ As can be seen, the training and validation loss decrease for the first couple o
 
 ![graph](https://github.com/brendan123/Semantic-Segmentation/blob/milestone-2/docs/images/tv_loss_over_epochs.png)
 
+## Precision and Recall Curve
+
+Below are the final mode's precision and recall values (for validation set) as computed by sklearn's precision_recall_curve function.
+
+![prcurve](https://github.com/brendan123/Semantic-Segmentation/blob/milestone-2/docs/images/pr_curve.png)
+
 ## Precision and Recall Values
 
 Below are the final precision and recall values (for training and validation sets) as computed by keras metrics.
