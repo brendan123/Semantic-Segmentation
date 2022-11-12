@@ -309,7 +309,7 @@ model.compile(optimizer=adam, loss=total_loss, metrics=metrics)
 model.summary()
 
 callback = tf.keras.callbacks.LambdaCallback(
-    on_epoch_end = lambda epoch, logs: nni.report_intermediate_result(logs['val_accuracy'])
+    on_epoch_end = lambda epoch, logs: nni.report_intermediate_result(logs['val_loss'])
 )
 
 history1 = model.fit(X_train, y_train, 
@@ -335,7 +335,7 @@ history1 = model.fit(X_train, y_train,
 ##Standardscaler 
 #Using categorical crossentropy as loss: 0.677
 
-nni.report_final_result(history1.history['val_accuracy'][-1])
+nni.report_final_result(history1.history['val_loss'][-1])
 
 model.save("models/%s/satellite_standard_unet_50epochs.hdf5" % str(nni.get_trial_id()))
 
