@@ -6,7 +6,7 @@ TODO: Explain in 2 pages including figures the method used.
 
 ## Search Space
 
-We defined the search space for our HPO to be the following (below). This choice would let us explore the affects of different batch sizes on model performance, along with different learning rates. The most interesting optimization, in our opinion, was `activation_type`. The initial model was using `relu` and we were curious to see how other activations functions performed on the image segmentation task. This turned out to be a good decision as it turned out many of our best models used [Swish](https://en.wikipedia.org/wiki/Swish_function), a modified SiLU (sigmoid-weighted linear unit).
+We defined the search space for our HPO to be the following (below). This choice would let us explore the affects of different batch sizes on model performance, along with different learning rates. The most interesting optimization, in our opinion, was `activation_type`. The initial model was using `relu` and we were curious to see how other activations functions performed on the image segmentation task. This turned out to be a good decision because many of our best models used [Swish](https://en.wikipedia.org/wiki/Swish_function), a modified SiLU (sigmoid-weighted linear unit).
 
 ```python
 search_space = {
