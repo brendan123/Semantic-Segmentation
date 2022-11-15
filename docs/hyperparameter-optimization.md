@@ -53,7 +53,10 @@ As explained below, this produced a final validation loss of `0.9069907069206238
 
 It is difficult to tell visually that the model performs even better than before. However, there are some slight differences such as greater granularity in difficult-to-mask images. We believe that at this point the model's performance is hampered almost only by the original masks which lack enough granularity to be trained upon further. Below, the leftmost image in a row corresponds to the real-world sattellite imagery (patchified), the center image corresponds to the human-generated segmentation mask, and the rightmost image corresponds to the model's predicted mask.
 
-![1](https://github.com/brendan123/Semantic-Segmentation/blob/milestone-3/docs/images/1.png)
+![compare](https://github.com/brendan123/Semantic-Segmentation/blob/milestone-3/docs/images/beforeafter.png)
+
+The image above happens to be one that was generated for validation from the initial model before HPO. We have a unique opportunity here to show them side-by-side.
+
 ![2](https://github.com/brendan123/Semantic-Segmentation/blob/milestone-3/docs/images/2.png)
 ![3](https://github.com/brendan123/Semantic-Segmentation/blob/milestone-3/docs/images/3.png)
 ![4](https://github.com/brendan123/Semantic-Segmentation/blob/milestone-3/docs/images/4.png)
