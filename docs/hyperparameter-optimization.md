@@ -26,6 +26,15 @@ params = {
 }
 ```
 
+We set up the NNI experiment using the following values. This means we used HyperBand as the tuner, with the goal of minimizing loss. We ran a total of 72 trials, with a maximum of 4 at a tmie. The whole ordeal took about 2.5 hours and utilized about 30 Google Colab Premium Compute Units.
+
+```python
+experiment.config.tuner.name = 'HyperBand'
+experiment.config.tuner.class_args['optimize_mode'] = 'minimize'
+experiment.config.max_trial_number = 72
+experiment.config.trial_concurrency = 4
+```
+
 ## Best Hyperparameters
 
 After running the Hyperparameter Optimization with HyperBand, the NNI experiment converged on the following values for our best model:
