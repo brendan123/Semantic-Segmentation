@@ -1,4 +1,44 @@
+# Explanation of HyperBand HPO
+
+TODO: Explain in 2 pages including figures the method used.
+
 # Hyperparameter Optimization Performance Results (with HyperBand minimizing loss)
+
+## Search Space
+
+We defined the search space for our HPO to be the following (below). This choice would let us explore the affects of different batch sizes on model performance, along with different learning rates. The most interesting optimization, in our opinion, was `activation_type`. The initial model was using `relu` and we were curious to see how other activations functions performed on the image segmentation task. This turned out to be a good decision as it turned out many of our best models used [Swish](https://en.wikipedia.org/wiki/Swish_function), a modified SiLU (sigmoid-weighted linear unit).
+
+```python
+search_space = {
+    'batch_size': {'_type': 'randint', '_value': [1, 32]},
+    'learning_rate': {'_type': 'loguniform', '_value': [0.0001, 0.1]},
+    'activation_type': {'_type': 'choice', '_value': ['relu', 'tanh', 'swish', None]}
+}
+```
+
+We set the initial values to be the following (indicated by the initial seed repo):
+
+```python
+params = {
+    'batch_size': 16,
+    'learning_rate': 0.007,
+    'activation_type': 'relu'
+}
+```
+
+## Best Hyperparameters
+
+After running the Hyperparameter Optimization with HyperBand, the NNI experiment converged on the following values for our best model:
+
+```python
+best_params = {
+    'batch_size': 24,
+    'learning_rate': 0.001990717520183526,
+    'activation_type': 'swish'
+}
+```
+
+As explained below, this produced a final validation loss of `0.9069907069206238`.
 
 ## 10 Segmented Images from the Validation Set
 
@@ -33,12 +73,11 @@ Below are the new best model's precision and recall values (for validation set) 
 
 ## Precision and Recall Values
 
-Below are the final precision and recall values (for training and validation sets) as computed by keras metrics.
+Below are the final numerical precision and recall values (for training and validation sets) as computed by keras metrics.
 
-> Training Precision:	0.8633995652198792
-> 
-> Training Recall:	0.8405570983886719
-> 
-> Validation Precision:	0.8623082637786865
-> 
-> Validation Recall:	0.8403835296630859
+```
+Training Precision:	0.8633995652198792
+Training Recall:	0.8405570983886719
+Validation Precision:	0.8623082637786865
+Validation Recall:	0.8403835296630859
+```
