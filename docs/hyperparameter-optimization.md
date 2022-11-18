@@ -1,6 +1,31 @@
 # Explanation of HyperBand HPO
 
-TODO: Explain in 2 pages including figures the method used.
+HyperBand is a type of optimization of Hyperparameters in a learning algorithm, that expands off the fundementals of successive halving optimaztion. 
+
+Hyperparameters in learning algorithms are varibales whos values control the learning process, they are the higest level of parameters available to the model. They are values such as: The number of epochs, the amount of branches in a decision tree, the minimum sample leaf, the learning rate etc. 
+
+The choice in the hyperparameters has a direct relation to the performace on the model, which is where the opimization comes in. 
+
+Since Hyperband is an expansion of Successive Halving Optimization we must first know what Successive Halving is. 
+
+Picture diagram of Successive Halving.
+![image](https://media.springernature.com/lw685/springer-static/image/chp%3A10.1007%2F978-3-030-05318-5_1/MediaObjects/453309_1_En_1_Fig3_HTML.png)  
+
+
+Successive Halving is an optimization method that starts off by assigning a budget, and equally assigns the buget to all models that are running with different hyperparameters. 
+At the end of the run, rate all the performances and drop the lower 50%, repeat until you only have one model left with the full budget, that would be your best performer. 
+
+Hyperband works almost the same way. Take a look at the overview of the algorithm. 
+
+![image](https://2020blogfor.github.io/images/blog_images/hyperband/pseudoCode.png)
+
+Take the same Successive Halving algorithm, and randomly sample 64 hyperperameters and evaluate after 100 iterations, discard the lower performers, and rerun the higer performers until you have one model left. 
+
+Hyperband allows for multiple configurations to be tested at one time per iteration, or several possible values for a fixed Budget.
+
+Hyperband also allows you to checkout the model during learning, and stop it and start it. 
+
+![Image](https://i0.wp.com/neptune.ai/wp-content/uploads/2022/10/hyperband.png?resize=768%2C424&ssl=1)
 
 # Hyperparameter Optimization Performance Results (with HyperBand minimizing loss)
 
