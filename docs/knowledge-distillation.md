@@ -13,7 +13,7 @@ Then distill the knowledge of the network to the student model, first establish 
 
 By distilling the knowledge from the teacher to the student model, the student is able to learn much faster, and much more information for having a smaller amount of layers. Without knowledge distillation the smaller models would be innacurate, take longer to train, and be unable to run on different and less efficient devices. 
 
-# Model Compression
+# Model Compression / Knowledge Distillation
 
 ## Framework Limitations
 
