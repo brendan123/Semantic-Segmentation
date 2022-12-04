@@ -26,7 +26,7 @@ Because of these limitations in NNI, and instead of giving up there, we decided 
 | HPO | 23,523 KB | 21,336 KB |
 | Pruned | 31,368 | 17,513 KB |
 
-As you can see, the Pruned Model, when GZipped, takes up <ins>18%</ins> less storage space when compressed. This could be improved even more with an optimized file format, `.tflite`, for example.
+As you can see, the Pruned Model, when GZipped, takes up <ins>18%</ins> less storage space when compressed. This could be improved even more with an optimized file format, `.tflite`, for example. Quantization would also help. We tried to implement XNNPack for inference on lower-power devices, but our model was not suited for this task. Might be worth revisiting in the future.
 
 ## 10 Segmented Images from the Validation Set
 
