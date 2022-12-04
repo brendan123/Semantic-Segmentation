@@ -17,11 +17,20 @@ By distilling the knowledge from the teacher to the student model, the student i
 
 ## Framework Limitations
 
-bla bla
+There were a number of framework limitations due to NNI. The main one is that there is currently no existing way to do model compression with models created from the Tensorflow framework. [This discussion](https://github.com/microsoft/nni/issues/4350) shows this to be the case as of November 2021, and it remains true to this day. There is very limited support for generation of masks for pruning a pre-trained model, but no way to actually apply the masks and begin the fine-tuning process. Further evidence of this is that even though Tensorflow code examples exist in [NNI - Model Compression](https://nni.readthedocs.io/en/v1.9/Compression/QuickStart.html), it is deprecated. Though we were able to get it working, there is and never was a [ModelSpeedup](https://nni.readthedocs.io/en/v1.9/Compression/ModelSpeedup.html) method, the crucial application of the prune masks, for Tensorflow in NNI
+
+Because of these limitations in NNI, and instead of giving up there, we decided to try to implement an article we found for Model Compression using Tensorflow Keras. An overview can be found [here](https://www.tensorflow.org/model_optimization/guide/pruning/pruning_with_keras), and was used in part in our code. It creates masks, generates a pruned model, and re-trains (fine-tunes) the new pruned model on the training data. Unfortunately, no inference cost improvements were realized. However, there was a substaintial decrease of model size due to pruning, as can be seen in the table below. GZipped Size is the one that matters in this instance.
+
+| Model | Size on Disk | <ins>GZipped Size</ins> |
+| --- | --- | --- |
+| HPO | 23,523 KB | 21,336 KB |
+| Pruned | 31,368 | 17,513 KB |
+
+As you can see, the Pruned Model, when GZipped, takes up <ins>18%</ins> less storage space when compressed. This could be improved even more with an optimized file format, `.tflite`, for example.
 
 ## 10 Segmented Images from the Validation Set
 
-bla bla
+There is not much difference between the HPO optimized version and the compressed version. This indicates that the compressed version maintains the knowledge learned in the dense model.
 
 ![1](https://github.com/brendan123/Semantic-Segmentation/blob/milestone-4/docs/images/1.png)
 ![2](https://github.com/brendan123/Semantic-Segmentation/blob/milestone-4/docs/images/2.png)
@@ -34,9 +43,9 @@ bla bla
 ![9](https://github.com/brendan123/Semantic-Segmentation/blob/milestone-4/docs/images/9.png)
 ![10](https://github.com/brendan123/Semantic-Segmentation/blob/milestone-4/docs/images/10.png)
 
-## Training and Validation Loss vs. Epochs
+## Validation Loss vs. Epochs
 
-As can be seen, the training and validation loss still decrease for the first couple of dozen epochs then plateaus, but the best HPO model hits a lower loss for validation than the previous best model.
+As can be seen, the validation loss still decrease for the first couple of dozen epochs then plateaus. The model achieved a similar validation loss to the prior HPO model. We believe this to be due to the high number of epochs we tried this time.
 
 ![graph](https://github.com/brendan123/Semantic-Segmentation/blob/milestone-4/docs/images/loss.png)
 
@@ -44,11 +53,11 @@ As can be seen, the training and validation loss still decrease for the first co
 
 Below are the new best model's precision and recall values (for validation set) as computed by sklearn's precision_recall_curve function.
 
-![prcurve](https://github.com/brendan123/Semantic-Segmentation/blob/milestone-4/docs/images/pr.png)
+![prcurve](https://github.com/brendan123/Semantic-Segmentation/blob/milestone-4/docs/images/prcurve.png)
 
 ## Precision and Recall Values
 
-Below are the final numerical precision and recall values (for training and validation sets) as computed by keras metrics.
+Below are the final numerical precision and recall values (for validation sets) as computed by keras metrics.
 
 ```
 Final Validation Precision: 0.9308
