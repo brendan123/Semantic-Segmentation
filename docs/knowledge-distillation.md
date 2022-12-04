@@ -12,3 +12,45 @@ Then distill the knowledge of the network to the student model, first establish 
 ![image](https://intellabs.github.io/distiller/imgs/knowledge_distillation.png)
 
 By distilling the knowledge from the teacher to the student model, the student is able to learn much faster, and much more information for having a smaller amount of layers. Without knowledge distillation the smaller models would be innacurate, take longer to train, and be unable to run on different and less efficient devices. 
+
+# Model Compression
+
+## Framework Limitations
+
+bla bla
+
+## 10 Segmented Images from the Validation Set
+
+bla bla
+
+![1](https://github.com/brendan123/Semantic-Segmentation/blob/milestone-4/docs/images/1.png)
+![2](https://github.com/brendan123/Semantic-Segmentation/blob/milestone-4/docs/images/2.png)
+![3](https://github.com/brendan123/Semantic-Segmentation/blob/milestone-4/docs/images/3.png)
+![4](https://github.com/brendan123/Semantic-Segmentation/blob/milestone-4/docs/images/4.png)
+![5](https://github.com/brendan123/Semantic-Segmentation/blob/milestone-4/docs/images/5.png)
+![6](https://github.com/brendan123/Semantic-Segmentation/blob/milestone-4/docs/images/6.png)
+![7](https://github.com/brendan123/Semantic-Segmentation/blob/milestone-4/docs/images/7.png)
+![8](https://github.com/brendan123/Semantic-Segmentation/blob/milestone-4/docs/images/8.png)
+![9](https://github.com/brendan123/Semantic-Segmentation/blob/milestone-4/docs/images/9.png)
+![10](https://github.com/brendan123/Semantic-Segmentation/blob/milestone-4/docs/images/10.png)
+
+## Training and Validation Loss vs. Epochs
+
+As can be seen, the training and validation loss still decrease for the first couple of dozen epochs then plateaus, but the best HPO model hits a lower loss for validation than the previous best model.
+
+![graph](https://github.com/brendan123/Semantic-Segmentation/blob/milestone-4/docs/images/loss.png)
+
+## Precision and Recall Curve
+
+Below are the new best model's precision and recall values (for validation set) as computed by sklearn's precision_recall_curve function.
+
+![prcurve](https://github.com/brendan123/Semantic-Segmentation/blob/milestone-4/docs/images/pr.png)
+
+## Precision and Recall Values
+
+Below are the final numerical precision and recall values (for training and validation sets) as computed by keras metrics.
+
+```
+Final Validation Precision: 0.9308
+Final Validation Recall:    0.9244
+```
